@@ -1,4 +1,5 @@
 const path = require('path');
+const globImporter = require('node-sass-glob-importer');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 
 module.exports = {
@@ -39,6 +40,7 @@ module.exports = {
             loader: 'sass-loader',
             options: {
               sourceMap: true,
+              importer: globImporter(),
             }
           },
         ],
