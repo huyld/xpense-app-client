@@ -26,6 +26,9 @@ module.exports = {
       },
       {
         test: /\.(s*)css$/,
+        include: [
+          path.resolve(__dirname, 'src', 'assets', 'scss'),
+        ],
         use: [
           {
             loader: 'style-loader'
