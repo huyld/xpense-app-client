@@ -43,6 +43,25 @@ module.exports = {
           },
         ],
       },
+      {
+        test: /\.(png|jp(e*)g)$/,
+        use: [{
+          loader: 'url-loader',
+          options: {
+            limit: 8000, // Convert images < 8kb to base64 strings
+            name: 'images/[hash]-[name].[ext]'
+          }
+        }]
+      },
+      {
+        test: /\.(svg)$/,
+        use: [{
+          loader: 'file-loader',
+          options: {
+            name: 'images/[hash]-[name].[ext]'
+          }
+        }]
+      },
     ],
   },
   devtool: 'source-map',
