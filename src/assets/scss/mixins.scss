@@ -1,0 +1,18 @@
+@mixin u-font-primary {
+  font-family: $font-primary;
+}
+
+@mixin u-fz($fontSize: false, $lineHeight: false, $letterSpacing: false) {
+
+  @if ($fontSize) {
+    font-size: $fontSize + px;
+  }
+
+  @if ($lineHeight) {
+    line-height: ($lineHeight / $fontSize);
+  }
+
+  @if ($letterSpacing) {
+    letter-spacing: $letterSpacing + em;
+  }
+}
