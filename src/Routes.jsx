@@ -4,12 +4,14 @@ import { Route, Switch } from 'react-router-dom';
 
 import AppliedRoute from 'src/components/AppliedRoute';
 import Home from 'src/containers/Home/Home';
+import Login from 'src/containers/Login/Login';
 import NotFound from 'src/containers/NotFound/NotFound';
 
 function Routes(props) {
   return (
     <Switch>
       <AppliedRoute path="/" exact component={Home} props={props.childProps} />
+      <AppliedRoute path="/login" exact component={Login} props={props.childProps} />
       <Route component={NotFound} />
     </Switch>
   );
