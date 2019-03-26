@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
 import { Nav, Navbar, NavItem } from 'react-bootstrap';
 import { LinkContainer } from 'react-router-bootstrap';
-import { BrowserRouter, Link } from 'react-router-dom';
+import { Link, withRouter } from 'react-router-dom';
+import PropTypes from 'prop-types';
 import { Auth } from 'aws-amplify';
 
 import Routes from 'src/Routes';
@@ -43,6 +44,8 @@ class App extends Component {
     await Auth.signOut();
 
     this.userHasAuthenticated(false);
+
+    this.props.history.push('/login');
   }
 
 
@@ -55,37 +58,39 @@ class App extends Component {
     return (
       !this.state.isAuthenticating &&
       <div className="App container">
-        <BrowserRouter>
-          <>
-            <Navbar fluid collapseOnSelect>
-              <Navbar.Header>
-                <Navbar.Brand>
-                  <Link to="/">Xpense</Link>
-                </Navbar.Brand>
-                <Navbar.Toggle />
-              </Navbar.Header>
-              <Navbar.Collapse>
-                <Nav pullRight>
-                  {this.state.isAuthenticated
-                    ? <NavItem onClick={this.handleLogout}>Logout</NavItem>
-                    : <>
-                        <LinkContainer to="/signup">
-                          <NavItem>Signup</NavItem>
-                        </LinkContainer>
-                        <LinkContainer to="/login">
-                          <NavItem>Login</NavItem>
-                        </LinkContainer>
-                      </>
-                  }
-                </Nav>
-              </Navbar.Collapse>
-            </Navbar>
-            <Routes childProps={childProps} />
-          </>
-        </BrowserRouter>
+        <>
+          <Navbar fluid collapseOnSelect>
+            <Navbar.Header>
+              <Navbar.Brand>
+                <Link to="/">Xpense</Link>
+              </Navbar.Brand>
+              <Navbar.Toggle />
+            </Navbar.Header>
+            <Navbar.Collapse>
+              <Nav pullRight>
+                {this.state.isAuthenticated
+                  ? <NavItem onClick={this.handleLogout}>Logout</NavItem>
+                  : <>
+                      <LinkContainer to="/signup">
+                        <NavItem>Signup</NavItem>
+                      </LinkContainer>
+                      <LinkContainer to="/login">
+                        <NavItem>Login</NavItem>
+                      </LinkContainer>
+                    </>
+                }
+              </Nav>
+            </Navbar.Collapse>
+          </Navbar>
+          <Routes childProps={childProps} />
+        </>
       </div>
     );
   }
 }
 
-export default App;
+App.propTypes = {
+  history: PropTypes.object,
+};
+
+export default withRouter(App);

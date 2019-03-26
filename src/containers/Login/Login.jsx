@@ -31,6 +31,7 @@ class Login extends Component {
     try {
       await Auth.signIn(this.state.email, this.state.password);
       this.props.userHasAuthenticated(true);
+      this.props.history.push('/');
     } catch (e) {
       alert(e.message);
     }
@@ -72,6 +73,7 @@ class Login extends Component {
 }
 
 Login.propTypes = {
+  history: PropTypes.object,
   userHasAuthenticated: PropTypes.func.isRequired
 };
 
