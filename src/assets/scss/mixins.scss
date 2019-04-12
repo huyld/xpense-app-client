@@ -16,3 +16,15 @@
     letter-spacing: $letterSpacing + em;
   }
 }
+
+@mixin sp {
+  @media (max-width: $xs) {
+    @content;
+  }
+}
+
+@mixin pc {
+  @media (min-width: $xs + 1px) {
+    @content;
+  }
+}
