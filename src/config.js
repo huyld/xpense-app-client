@@ -1,4 +1,17 @@
 export default {
+  accountColors: [
+    'ffaaaa',
+    'fff194',
+    'bff88b',
+    '93baff',
+    'b491f6',
+    'f7eba6',
+    'ff8e72',
+    'a393bf',
+    '96e6b3',
+    '696d87',
+  ],
+
   currencies: [
     {
       'name': 'Albania Lek',

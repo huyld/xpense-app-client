@@ -1,0 +1,45 @@
+.NewAccount {
+  display: flex;
+  justify-content: center;
+
+  form {
+    width: 100%;
+    max-width: 600px;
+  }
+
+  .color-list {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+
+    & > label {
+      padding: 0;
+      margin: 0;
+    }
+
+    input[type="radio"] {
+      margin: 0;
+      position: absolute;
+      opacity: 0;
+
+      & + span {
+        height: 40px;
+        width: 40px;
+        display: inline-block;
+      }
+
+      &:checked + span {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+        &::after {
+          content: '\2713';
+          color: white;
+          font-size: 28px;
+        }
+      }
+    }
+  }
+
+}
