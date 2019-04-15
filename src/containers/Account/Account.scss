@@ -41,5 +41,34 @@
       }
     }
   }
+}
 
+.AccountList {
+  .account-list {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .account-item {
+    margin-bottom: 10px;
+    border: none;
+    border-radius: 10px;
+
+    .list-group-item-heading {
+      font-weight: bold;
+      color: $color-white;
+    }
+
+    .list-group-item-text{
+      color: $color-fffefe;
+    }
+  }
+
+  .add-btn {
+    border-radius: 10px;
+
+    h4 {
+      text-align: center;
+    }
+  }
 }

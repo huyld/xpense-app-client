@@ -12,3 +12,13 @@ export function postAccount(account) {
     body: account
   });
 }
+
+/**
+ * Get list of accounts of authenticated user
+ *
+ * @export
+ * @returns
+ */
+export function getAccounts() {
+  return API.get('xpense', '/accounts');
+}
