@@ -22,3 +22,14 @@ export function postAccount(account) {
 export function getAccounts() {
   return API.get('xpense', '/accounts');
 }
+
+/**
+ * Delete an account
+ *
+ * @export
+ * @param {string} accountId ID of the account to be deleted
+ * @returns
+ */
+export function deleteAccount(accountId) {
+  return API.del('xpense', `/accounts/${accountId}`);
+}
