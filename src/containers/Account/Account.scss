@@ -2,11 +2,13 @@
   display: flex;
   justify-content: center;
 
-  form {
+  .account-form {
     width: 100%;
     max-width: 600px;
   }
+}
 
+.account-form {
   .color-list {
     display: flex;
     flex-wrap: wrap;
