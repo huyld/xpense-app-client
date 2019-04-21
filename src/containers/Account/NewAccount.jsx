@@ -1,20 +1,15 @@
 import React, { Component } from 'react';
-import {
-  Alert,
-  ControlLabel,
-  FormGroup,
-  FormControl,
-  Radio } from 'react-bootstrap';
+import { Alert } from 'react-bootstrap';
 import PropTypes from 'prop-types';
 
 import * as API from 'src/utils/API';
-import LoaderButton from 'src/components/LoaderButton/LoaderButton';
-import config from 'src/config';
+import AccountForm from 'src/components/AccountForm/AccountForm';
 
 class NewAccount extends Component {
   constructor(props) {
     super(props);
 
+    this.validateForm = this.validateForm.bind(this);
     this.handleChange = this.handleChange.bind(this);
     this.handleRadiosChange = this.handleRadiosChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
@@ -70,57 +65,18 @@ class NewAccount extends Component {
         >
           {this.state.otherError}
         </Alert>}
-        <form onSubmit={this.handleSubmit}>
-          <FormGroup controlId="accountName">
-            <ControlLabel>Account name</ControlLabel>
-            <FormControl
-              onChange={this.handleChange}
-              value={this.state.accountName}
-            />
-          </FormGroup>
-          <FormGroup controlId="currency">
-            <ControlLabel>Currency</ControlLabel>
-            <FormControl componentClass="select"
-              onChange={this.handleChange}
-              value={this.state.currency}
-            >
-              {config.currencies.map(currency =>
-                <option
-                  key={currency.code}
-                  value={currency.code}>{`${currency.code} - ${currency.name}`}
-                </option>
-              )}
-            </FormControl>
-          </FormGroup>
-          <FormGroup controlId="color">
-            <ControlLabel>Color</ControlLabel>
-            <div className="color-list">
-              {config.accountColors.map(code =>
-                <Radio
-                  inline
-                  type='radio'
-                  key={code}
-                  id={code}
-                  name='color'
-                  checked={this.state.color === code}
-                  onChange={this.handleRadiosChange}
-                >
-                  <span style={{ backgroundColor: `#${code}` }}></span>
-                </Radio>
-              )}
-            </div>
-          </FormGroup>
-          <LoaderButton
-            block
-            bsStyle="primary"
-            bsSize="large"
-            disabled={!this.validateForm()}
-            type="submit"
-            isLoading={this.state.isLoading}
-            text="Create"
-            loadingText="Creating…"
-          />
-        </form>
+        <AccountForm
+          validateForm={this.validateForm}
+          handleChange={this.handleChange}
+          handleRadiosChange={this.handleRadiosChange}
+          handleSubmit={this.handleSubmit}
+
+          accountName={this.state.accountName}
+          currency={this.state.currency}
+          color={this.state.color}
+          isLoading={this.state.isLoading}
+          isNew={true}
+        ></AccountForm>
       </div>
     );
   }
