@@ -17,6 +17,7 @@ class NewAccount extends Component {
     this.state = {
       isLoading: null,
       accountName: '',
+      initialBalance: 0,
       currency: 'USD',
       color: 'ffaaaa',
       otherError: '',
@@ -35,7 +36,9 @@ class NewAccount extends Component {
 
   handleChange(event) {
     this.setState({
-      [event.target.id]: event.target.value
+      [event.target.id]:
+        event.target.id === 'initialBalance' ?
+          event.target.valueAsNumber : event.target.value
     });
   }
 
@@ -47,6 +50,7 @@ class NewAccount extends Component {
     try {
       await API.postAccount({
         accountName: this.state.accountName,
+        initialBalance: this.state.initialBalance || 0,
         currency: this.state.currency,
         color: this.state.color,
       });
@@ -63,7 +67,7 @@ class NewAccount extends Component {
         {!!this.state.otherError && <Alert
           onDismiss bsStyle="danger"
         >
-          {this.state.otherError}
+          {this.state.otherError.message}
         </Alert>}
         <AccountForm
           validateForm={this.validateForm}
@@ -72,6 +76,7 @@ class NewAccount extends Component {
           handleSubmit={this.handleSubmit}
 
           accountName={this.state.accountName}
+          initialBalance={this.state.initialBalance}
           currency={this.state.currency}
           color={this.state.color}
           isLoading={this.state.isLoading}

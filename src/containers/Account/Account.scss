@@ -9,6 +9,15 @@
 }
 
 .account-form {
+  .initial-balance {
+    -moz-appearance: textfield;
+
+    &::-webkit-outer-spin-button,
+    &::-webkit-inner-spin-button {
+        display: none;
+    }
+  }
+
   .color-list {
     display: flex;
     flex-wrap: wrap;

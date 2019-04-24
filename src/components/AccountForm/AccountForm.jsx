@@ -18,7 +18,7 @@ class AccountForm extends Component {
 
   render() {
     const { validateForm, handleChange, handleRadiosChange, handleSubmit, handleDelete,
-      accountName, currency, color, isLoading, isDeleting, isNew } = this.props;
+      accountName, initialBalance, currency, color, isLoading, isDeleting, isNew } = this.props;
     return (
       <form onSubmit={handleSubmit} className="account-form">
         <FormGroup controlId="accountName">
@@ -26,6 +26,15 @@ class AccountForm extends Component {
           <FormControl
             onChange={handleChange}
             value={accountName}
+          />
+        </FormGroup>
+        <FormGroup controlId="initialBalance">
+          <ControlLabel>Initial balance</ControlLabel>
+          <FormControl
+            onChange={handleChange}
+            type="number"
+            value={initialBalance}
+            className="initial-balance"
           />
         </FormGroup>
         <FormGroup controlId="currency">
@@ -100,6 +109,7 @@ AccountForm.propTypes = {
   },
 
   accountName: PropTypes.string,
+  initialBalance: PropTypes.number,
   currency: PropTypes.string,
   color: PropTypes.string,
   isLoading: PropTypes.bool,
