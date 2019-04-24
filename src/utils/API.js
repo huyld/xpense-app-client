@@ -24,6 +24,30 @@ export function getAccounts() {
 }
 
 /**
+ * Get account detail
+ *
+ * @export
+ * @param {string} accountId
+ * @returns
+ */
+export function getAccount(accountId) {
+  return API.get('xpense', `/accounts/${accountId}`);
+}
+
+/**
+ * Update account
+ *
+ * @export
+ * @param {*} account
+ * @returns
+ */
+export function saveAccount(account) {
+  return API.put('xpense', `/accounts/${account.accountId}`, {
+    body: account
+  });
+}
+
+/**
  * Delete an account
  *
  * @export
