@@ -8,12 +8,20 @@ import Login from 'src/containers/Login/Login';
 import Signup from 'src/containers/Signup/Signup';
 import NotFound from 'src/containers/NotFound/NotFound';
 
+import NewAccount from 'src/containers/Account/NewAccount';
+import AccountList from 'src/containers/Account/AccountList';
+import Account from 'src/containers/Account/Account';
+
 function Routes(props) {
   return (
     <Switch>
       <AppliedRoute path="/" exact component={Home} props={props.childProps} />
       <AppliedRoute path="/login" exact component={Login} props={props.childProps} />
       <AppliedRoute path="/signup" exact component={Signup} props={props.childProps} />
+
+      <AppliedRoute path="/accounts/new" exact component={NewAccount} props={props.childProps} />
+      <AppliedRoute path="/accounts/:id" exact component={Account} props={props.childProps} />
+      <AppliedRoute path="/accounts" exact component={AccountList} props={props.childProps} />
       <Route component={NotFound} />
     </Switch>
   );

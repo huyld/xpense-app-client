@@ -1,0 +1,86 @@
+.NewAccount {
+  display: flex;
+  justify-content: center;
+
+  .account-form {
+    width: 100%;
+    max-width: 600px;
+  }
+}
+
+.account-form {
+  .initial-balance {
+    -moz-appearance: textfield;
+
+    &::-webkit-outer-spin-button,
+    &::-webkit-inner-spin-button {
+        display: none;
+    }
+  }
+
+  .color-list {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+
+    & > label {
+      padding: 0;
+      margin: 0;
+    }
+
+    input[type="radio"] {
+      margin: 0;
+      position: absolute;
+      opacity: 0;
+
+      & + span {
+        height: 40px;
+        width: 40px;
+        display: inline-block;
+        border-radius: 50%;
+      }
+
+      &:checked + span {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+        &::after {
+          content: '\2713';
+          color: white;
+          font-size: 28px;
+        }
+      }
+    }
+  }
+}
+
+.AccountList {
+  .account-list {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .account-item {
+    margin-bottom: 10px;
+    border: none;
+    border-radius: 10px;
+
+    .list-group-item-heading {
+      font-weight: bold;
+      color: $color-white;
+    }
+
+    .list-group-item-text{
+      color: $color-fffefe;
+    }
+  }
+
+  .add-btn {
+    border-radius: 10px;
+
+    h4 {
+      text-align: center;
+    }
+  }
+}

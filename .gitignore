@@ -11,7 +11,7 @@
 .env.production.local
 .wip/
 .bak/
-
+aws.config.js
 
 ### Node ###
 # Logs
