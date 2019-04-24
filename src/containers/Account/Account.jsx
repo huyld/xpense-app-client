@@ -1,11 +1,5 @@
 import React, { Component } from 'react';
-import {
-  Alert,
-  // FormGroup,
-  // FormControl,
-  // ControlLabel,
-  // Radio
-} from 'react-bootstrap';
+import { Alert } from 'react-bootstrap';
 import PropTypes from 'prop-types';
 
 
