@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { Route, Switch } from 'react-router-dom';
 
-import AppliedRoute from 'src/components/AppliedRoute';
+import AppliedRoute from 'src/components/Routing/AppliedRoute';
 import Home from 'src/containers/Home/Home';
 import Login from 'src/containers/Login/Login';
 import Signup from 'src/containers/Signup/Signup';
