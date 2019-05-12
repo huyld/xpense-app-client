@@ -57,3 +57,13 @@ export function saveAccount(account) {
 export function deleteAccount(accountId) {
   return API.del('xpense', `/accounts/${accountId}`);
 }
+
+/**
+ * Get list of categories of authenticated user
+ *
+ * @export
+ * @returns
+ */
+export function getCategories() {
+  return API.get('xpense', '/categories');
+}
