@@ -62,9 +62,9 @@ module.exports = {
         }]
       },
       {
-        test: /\.(svg)$/,
+        test: /\.(ttf|eot|svg|woff(2)?)(\?[a-z0-9=&.]+)?$/,
         use: [{
-          loader: 'file-loader',
+          loader: 'url-loader',
           options: {
             name: 'images/[hash]-[name].[ext]'
           }
