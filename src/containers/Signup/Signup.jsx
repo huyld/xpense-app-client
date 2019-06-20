@@ -4,7 +4,7 @@ import {
   HelpBlock,
   FormGroup,
   FormControl,
-  ControlLabel
+  FormLabel
 } from 'react-bootstrap';
 import { Auth } from 'aws-amplify';
 import PropTypes from 'prop-types';
@@ -110,7 +110,7 @@ class Signup extends Component {
     return (
       <form onSubmit={this.handleConfirmationSubmit}>
         <FormGroup controlId="confirmationCode" bsSize="large">
-          <ControlLabel>Confirmation Code</ControlLabel>
+          <FormLabel>Confirmation Code</FormLabel>
           <FormControl
             autoFocus
             type="tel"
@@ -136,18 +136,18 @@ class Signup extends Component {
     return (
       <>
         {this.state.usedEmail && <Alert
-          onDismiss bsStyle="danger"
+          onClose variant="danger"
         >
           This email has already been used. Please enter another email address.
         </Alert>}
         {!!this.state.otherError && <Alert
-          onDismiss bsStyle="danger"
+          onClose variant="danger"
         >
           {this.state.otherError}
         </Alert>}
         <form onSubmit={this.handleSubmit}>
           <FormGroup controlId="email" bsSize="large">
-            <ControlLabel>Email</ControlLabel>
+            <FormLabel>Email</FormLabel>
             <FormControl
               autoFocus
               type="email"
@@ -156,7 +156,7 @@ class Signup extends Component {
             />
           </FormGroup>
           <FormGroup controlId="password" bsSize="large">
-            <ControlLabel>Password</ControlLabel>
+            <FormLabel>Password</FormLabel>
             <FormControl
               value={this.state.password}
               onChange={this.handleChange}
@@ -164,7 +164,7 @@ class Signup extends Component {
             />
           </FormGroup>
           <FormGroup controlId="confirmPassword" bsSize="large">
-            <ControlLabel>Confirm Password</ControlLabel>
+            <FormLabel>Confirm Password</FormLabel>
             <FormControl
               value={this.state.confirmPassword}
               onChange={this.handleChange}

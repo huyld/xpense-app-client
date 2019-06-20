@@ -65,7 +65,7 @@ class NewAccount extends Component {
     return (
       <div className="NewAccount">
         {!!this.state.otherError && <Alert
-          onDismiss bsStyle="danger"
+          onClose variant="danger"
         >
           {this.state.otherError.message}
         </Alert>}

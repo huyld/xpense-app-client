@@ -63,7 +63,7 @@ class AccountList extends Component {
       <div className="accounts">
         <PageHeader>Accounts</PageHeader>
         {!!this.state.otherError && <Alert
-          onDismiss bsStyle="danger"
+          onClose variant="danger"
         >
           {this.state.otherError}
         </Alert>}

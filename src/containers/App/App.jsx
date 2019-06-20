@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Nav, Navbar, NavItem } from 'react-bootstrap';
+import { Nav, Navbar } from 'react-bootstrap';
 import { LinkContainer } from 'react-router-bootstrap';
 import { Link, withRouter } from 'react-router-dom';
 import PropTypes from 'prop-types';
@@ -59,23 +59,21 @@ class App extends Component {
       !this.state.isAuthenticating &&
       <div className="App container">
         <>
-          <Navbar fluid collapseOnSelect>
-            <Navbar.Header>
-              <Navbar.Brand>
-                <Link to="/">Xpense</Link>
-              </Navbar.Brand>
-              <Navbar.Toggle />
-            </Navbar.Header>
+          <Navbar collapseOnSelect>
+            <Navbar.Brand>
+              <Link to="/">Xpense</Link>
+            </Navbar.Brand>
+            <Navbar.Toggle />
             <Navbar.Collapse>
               <Nav pullRight>
                 {this.state.isAuthenticated
-                  ? <NavItem onClick={this.handleLogout}>Logout</NavItem>
+                  ? <Nav.Item onClick={this.handleLogout}>Logout</Nav.Item>
                   : <>
                       <LinkContainer to="/signup">
-                        <NavItem>Signup</NavItem>
+                        <Nav.Item>Signup</Nav.Item>
                       </LinkContainer>
                       <LinkContainer to="/login">
-                        <NavItem>Login</NavItem>
+                        <Nav.Item>Login</Nav.Item>
                       </LinkContainer>
                     </>
                 }
