@@ -2,8 +2,8 @@ import React, { Component } from 'react';
 import {
   FormGroup,
   FormControl,
-  ControlLabel,
-  Radio,
+  FormLabel,
+  FormCheck,
 } from 'react-bootstrap';
 import PropTypes from 'prop-types';
 
@@ -22,14 +22,14 @@ class AccountForm extends Component {
     return (
       <form onSubmit={handleSubmit} className="account-form">
         <FormGroup controlId="accountName">
-          <ControlLabel>Account name</ControlLabel>
+          <FormLabel>Account name</FormLabel>
           <FormControl
             onChange={handleChange}
             value={accountName}
           />
         </FormGroup>
         <FormGroup controlId="initialBalance">
-          <ControlLabel>Initial balance</ControlLabel>
+          <FormLabel>Initial balance</FormLabel>
           <FormControl
             onChange={handleChange}
             type="number"
@@ -38,8 +38,8 @@ class AccountForm extends Component {
           />
         </FormGroup>
         <FormGroup controlId="currency">
-          <ControlLabel>Currency</ControlLabel>
-          <FormControl componentClass="select"
+          <FormLabel>Currency</FormLabel>
+          <FormControl as="select"
             onChange={handleChange}
             value={currency}
             disabled={isNew ? false : true}
@@ -53,10 +53,10 @@ class AccountForm extends Component {
           </FormControl>
         </FormGroup>
         <FormGroup controlId="color">
-          <ControlLabel>Color</ControlLabel>
+          <FormLabel>Color</FormLabel>
           <div className="color-list">
             {config.accountColors.map(code =>
-              <Radio
+              <FormCheck
                 inline
                 type='radio'
                 key={code}
@@ -66,13 +66,13 @@ class AccountForm extends Component {
                 onChange={handleRadiosChange}
               >
                 <span style={{ backgroundColor: `#${code}` }}></span>
-              </Radio>
+              </FormCheck>
             )}
           </div>
         </FormGroup>
         <LoaderButton
           block
-          bsStyle="primary"
+          variant="primary"
           bsSize="large"
           disabled={!validateForm()}
           type="submit"
@@ -82,7 +82,7 @@ class AccountForm extends Component {
         />
         {!isNew && <LoaderButton
           block
-          bsStyle="danger"
+          variant="danger"
           bsSize="large"
           isLoading={isDeleting}
           onClick={handleDelete}

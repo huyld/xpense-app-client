@@ -111,7 +111,7 @@ class Account extends Component {
       !!this.state.accountName &&
       <div className="Account">
         {!!this.state.otherError && <Alert
-          onDismiss bsStyle="danger"
+          onClose variant="danger"
         >
           {this.state.otherError.message}
         </Alert>}
