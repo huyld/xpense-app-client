@@ -59,20 +59,20 @@ class App extends Component {
       !this.state.isAuthenticating &&
       <div className="App container">
         <>
-          <Navbar collapseOnSelect>
+          <Navbar collapseOnSelect bg="light" expand="md">
             <Navbar.Brand>
               <Link to="/">Xpense</Link>
             </Navbar.Brand>
             <Navbar.Toggle />
             <Navbar.Collapse>
-              <Nav pullRight>
+              <Nav className="justify-content-end ml-auto">
                 {this.state.isAuthenticated
                   ? <Nav.Item onClick={this.handleLogout}>Logout</Nav.Item>
                   : <>
-                      <LinkContainer to="/signup">
+                      <LinkContainer as={Nav.Link} to="/signup">
                         <Nav.Item>Signup</Nav.Item>
                       </LinkContainer>
-                      <LinkContainer to="/login">
+                      <LinkContainer as={Nav.Link} to="/login">
                         <Nav.Item>Login</Nav.Item>
                       </LinkContainer>
                     </>

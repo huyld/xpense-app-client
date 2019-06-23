@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import {
   Alert,
-  HelpBlock,
+  Form,
   FormGroup,
   FormControl,
   FormLabel
@@ -109,7 +109,7 @@ class Signup extends Component {
   renderConfirmationForm() {
     return (
       <form onSubmit={this.handleConfirmationSubmit}>
-        <FormGroup controlId="confirmationCode" bsSize="large">
+        <FormGroup controlId="confirmationCode" size="lg">
           <FormLabel>Confirmation Code</FormLabel>
           <FormControl
             autoFocus
@@ -117,11 +117,11 @@ class Signup extends Component {
             value={this.state.confirmationCode}
             onChange={this.handleChange}
           />
-          <HelpBlock>Please check your email for the code.</HelpBlock>
+          <Form.Text className="text-muted">Please check your email for the code.</Form.Text>
         </FormGroup>
         <LoaderButton
           block
-          bsSize="large"
+          size="lg"
           disabled={!this.validateConfirmationForm()}
           type="submit"
           isLoading={this.state.isLoading}
@@ -146,7 +146,7 @@ class Signup extends Component {
           {this.state.otherError}
         </Alert>}
         <form onSubmit={this.handleSubmit}>
-          <FormGroup controlId="email" bsSize="large">
+          <FormGroup controlId="email" size="lg">
             <FormLabel>Email</FormLabel>
             <FormControl
               autoFocus
@@ -155,7 +155,7 @@ class Signup extends Component {
               onChange={this.handleChange}
             />
           </FormGroup>
-          <FormGroup controlId="password" bsSize="large">
+          <FormGroup controlId="password" size="lg">
             <FormLabel>Password</FormLabel>
             <FormControl
               value={this.state.password}
@@ -163,7 +163,7 @@ class Signup extends Component {
               type="password"
             />
           </FormGroup>
-          <FormGroup controlId="confirmPassword" bsSize="large">
+          <FormGroup controlId="confirmPassword" size="lg">
             <FormLabel>Confirm Password</FormLabel>
             <FormControl
               value={this.state.confirmPassword}
@@ -173,7 +173,7 @@ class Signup extends Component {
           </FormGroup>
           <LoaderButton
             block
-            bsSize="large"
+            size="lg"
             disabled={!this.validateForm()}
             type="submit"
             isLoading={this.state.isLoading}

@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import { Route, Redirect } from 'react-router-dom';
 
 /**
@@ -34,6 +35,11 @@ const UnauthenticatedRoute = ({ component: C, props: cProps, ...rest }) => {
         : <Redirect
           to={redirect === '' || redirect === null ? '/' : redirect} />}
   />;
+};
+
+UnauthenticatedRoute.propTypes = {
+  component: PropTypes.func,
+  props: PropTypes.object,
 };
 
 export default UnauthenticatedRoute;

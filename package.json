@@ -42,6 +42,7 @@
     "webpack-dev-server": "^3.7.2"
   },
   "dependencies": {
+    "@primer/octicons-react": "^9.1.1",
     "aws-amplify": "^1.1.29",
     "react": "^16.8.6",
     "react-bootstrap": "^1.0.0-beta.9",

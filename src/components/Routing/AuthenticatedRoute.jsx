@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import { Route, Redirect } from 'react-router-dom';
 
 const AuthenticatedRoute = ({ component: C, props: cProps, ...rest }) =>
@@ -12,5 +13,11 @@ const AuthenticatedRoute = ({ component: C, props: cProps, ...rest }) =>
             .search}`}
         />}
   />;
+
+AuthenticatedRoute.propTypes = {
+  component: PropTypes.func,
+  location: PropTypes.object,
+  props: PropTypes.object,
+};
 
 export default AuthenticatedRoute;
