@@ -1,7 +1,37 @@
 .App {
   margin-top: 15px;
 
+  nav.navbar {
+    margin-bottom: 20px;
+  }
+
   .navbar-brand {
     font-weight: bold;
+
+    a {
+      color: $color-head;
+      text-decoration: none;
+    }
+  }
+
+  .navbar-collapse {
+    .nav-item {
+      margin-right: 20px;
+      cursor: pointer;
+
+      &:last-child {
+        margin-right: 0;
+      }
+    }
+
+    &.show, &.collapsing {
+      .nav-item {
+        margin-bottom: 5px;
+
+        &:last-child {
+          margin-bottom: 0;
+        }
+      }
+    }
   }
 }

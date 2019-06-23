@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Alert, PageHeader, ListGroup, ListGroupItem } from 'react-bootstrap';
+import { Alert, ListGroup, ListGroupItem } from 'react-bootstrap';
 import { LinkContainer } from 'react-router-bootstrap';
 import PropTypes from 'prop-types';
 
@@ -61,7 +61,7 @@ class AccountList extends Component {
   renderAccounts() {
     return (
       <div className="accounts">
-        <PageHeader>Accounts</PageHeader>
+        <h1>Accounts</h1>
         {!!this.state.otherError && <Alert
           onClose variant="danger"
         >

@@ -73,7 +73,7 @@ class AccountForm extends Component {
         <LoaderButton
           block
           variant="primary"
-          bsSize="large"
+          size="lg"
           disabled={!validateForm()}
           type="submit"
           isLoading={isLoading}
@@ -83,7 +83,7 @@ class AccountForm extends Component {
         {!isNew && <LoaderButton
           block
           variant="danger"
-          bsSize="large"
+          size="lg"
           isLoading={isDeleting}
           onClick={handleDelete}
           text="Delete"

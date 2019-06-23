@@ -1,6 +1,8 @@
 .LoaderButton {
-  .spinning.glyphicon {
-    margin-right: 7px;
+  svg.spinning {
+    width: 20px;
+    height: 20px;
+    margin: 2px 7px;
     top: 2px;
     animation: spin 1s infinite linear;
   }
