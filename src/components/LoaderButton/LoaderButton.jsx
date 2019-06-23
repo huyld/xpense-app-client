@@ -1,5 +1,6 @@
 import React from 'react';
-import { Button, Glyphicon } from 'react-bootstrap';
+import { Button } from 'react-bootstrap';
+import Octicon, { Sync } from '@primer/octicons-react';
 
 /**
  * Button with spinning icon
@@ -18,6 +19,6 @@ export default ({
     disabled={disabled || isLoading}
     {...props}
   >
-    {isLoading && <Glyphicon glyph="refresh" className="spinning" />}
+    {isLoading && <Octicon icon={Sync} className="spinning" />}
     {!isLoading ? text : loadingText}
   </Button>;
