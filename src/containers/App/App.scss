@@ -1,6 +1,10 @@
 .App {
   margin-top: 15px;
 
+  nav.navbar {
+    margin-bottom: 20px;
+  }
+
   .navbar-brand {
     font-weight: bold;
 
@@ -13,6 +17,7 @@
   .navbar-collapse {
     .nav-item {
       margin-right: 20px;
+      cursor: pointer;
 
       &:last-child {
         margin-right: 0;
