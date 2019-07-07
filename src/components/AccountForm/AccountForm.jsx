@@ -64,9 +64,8 @@ class AccountForm extends Component {
                 name='color'
                 checked={color === code}
                 onChange={handleRadiosChange}
-              >
-                <span style={{ backgroundColor: `#${code}` }}></span>
-              </FormCheck>
+                label={<span style={{ backgroundColor: `#${code}` }}></span>}
+              />
             )}
           </div>
         </FormGroup>

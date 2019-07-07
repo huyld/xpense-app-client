@@ -33,14 +33,19 @@
       position: absolute;
       opacity: 0;
 
-      & + span {
+      & + label {
         height: 40px;
-        width: 40px;
-        display: inline-block;
-        border-radius: 50%;
+
+        &  > span {
+          height: 40px;
+          width: 40px;
+          display: inline-block;
+          border-radius: 50%;
+          cursor: pointer;
+        }
       }
 
-      &:checked + span {
+      &:checked + label > span {
         display: flex;
         justify-content: center;
         align-items: center;
