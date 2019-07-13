@@ -67,3 +67,16 @@ export function deleteAccount(accountId) {
 export function getCategories() {
   return API.get('xpense', '/categories');
 }
+
+/**
+ * Post new category
+ *
+ * @export
+ * @param {*} category
+ * @returns
+ */
+export function postCategory(category) {
+  return API.post('xpense', '/category', {
+    body: category
+  });
+}

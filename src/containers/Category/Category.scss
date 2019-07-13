@@ -9,7 +9,6 @@ $color-subcategory: $color-base2;
 $category-item-side-padding: 30px;
 
 .CategoryList {
-
   .page-header {
     h1 {
       display: flex;
@@ -74,7 +73,7 @@ $category-item-side-padding: 30px;
     }
 
     &:not(:last-of-type)::after {
-      content: '';
+      content: "";
       height: 1px;
       width: calc(100% - #{$category-item-side-padding} * 2);
       left: $category-item-side-padding;
@@ -83,7 +82,7 @@ $category-item-side-padding: 30px;
       background-color: $color-border;
     }
 
-    &>div {
+    & > div {
       flex-grow: 1;
     }
 
@@ -130,7 +129,7 @@ $category-item-side-padding: 30px;
   }
 
   // Category item
-  .accordion>.card.category-item {
+  .accordion > .card.category-item {
     border-top: none;
 
     &:first-of-type {
@@ -150,5 +149,78 @@ $category-item-side-padding: 30px;
 
   .income-list .category-item::before {
     background-color: $color-income;
+  }
+}
+
+.Category {
+  .category-form {
+    .icon-list {
+      padding: 5px;
+      display: flex;
+      flex-wrap: wrap;
+      border-radius: 10px;
+      background-color: $color-99;
+
+      input[type="radio"] {
+        margin: 0;
+        position: absolute;
+        opacity: 0;
+
+        & + label {
+          height: 40px;
+
+          & > i {
+            @include u-fz(28, 32, 0);
+            height: 40px;
+            width: 40px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            border-radius: 50%;
+            color: $color-fffefe;
+            cursor: pointer;
+            transition-duration: 0.15s;
+
+            &:hover {
+              @include u-fz(32, 32, 0);
+              background-color: $color-52;
+            }
+          }
+        }
+
+        &:checked + label > i {
+          background-color: $color-fffefe;
+          color: $color-99;
+        }
+      }
+    }
+
+    .sub-label {
+      margin-bottom: 0.5rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .subcategory {
+      display: flex;
+      align-items: center;
+
+      input {
+        margin-right: 15px;
+      }
+
+      &__del {
+        height: 30px;
+        width: 30px;
+        padding: 0;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        @include u-fz(20);
+        font-weight: bold;
+      }
+    }
   }
 }
