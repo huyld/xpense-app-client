@@ -15,6 +15,9 @@ import NewAccount from 'src/containers/Account/NewAccount';
 import AccountList from 'src/containers/Account/AccountList';
 import Account from 'src/containers/Account/Account';
 
+import CategoryList from 'src/containers/Category/CategoryList';
+import Category from 'src/containers/Category/Category';
+
 function Routes(props) {
   return (
     <Switch>
@@ -25,6 +28,10 @@ function Routes(props) {
       <AuthenticatedRoute path="/accounts/new" exact component={NewAccount} props={props.childProps} />
       <AuthenticatedRoute path="/accounts/:id" exact component={Account} props={props.childProps} />
       <AuthenticatedRoute path="/accounts" exact component={AccountList} props={props.childProps} />
+
+      <AuthenticatedRoute path="/categories" exact component={CategoryList} props={props.childProps} />
+      <AuthenticatedRoute path="/categories/new" exact component={Category} props={{ isEditMode: false, ...props.childProps }} />
+      <AuthenticatedRoute path="/categories/:id" exact component={Category} props={{ isEditMode: true, ...props.childProps}} />
       <Route component={NotFound} />
     </Switch>
   );

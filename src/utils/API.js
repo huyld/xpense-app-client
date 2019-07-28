@@ -57,3 +57,53 @@ export function saveAccount(account) {
 export function deleteAccount(accountId) {
   return API.del('xpense', `/accounts/${accountId}`);
 }
+
+/**
+ * Get list of categories of authenticated user
+ *
+ * @export
+ * @returns
+ */
+export function getCategories() {
+  return API.get('xpense', '/categories');
+}
+
+/**
+ * Post new category
+ *
+ * @export
+ * @param {*} category
+ * @returns
+ */
+export function postCategory(category) {
+  return API.post('xpense', '/category', {
+    body: category
+  });
+}
+
+/**
+ * Get category detail
+ *
+ * @export
+ * @param {string} categoryId
+ * @returns
+ */
+export function getCategory(categoryId) {
+  return API.get('xpense', `/categories/${categoryId}`);
+}
+
+
+/**
+ * Update category detail
+ *
+ * @export
+ * @param {} category
+ * @returns
+ */
+export function updateCategory(category) {
+  return API.put('xpense', `/categories/${category.categoryId}`, {
+    body: category,
+  });
+}
+
+

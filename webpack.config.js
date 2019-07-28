@@ -1,5 +1,6 @@
 const path = require('path');
 const globImporter = require('node-sass-glob-importer');
+const webpack = require('webpack');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 
 module.exports = {
@@ -9,7 +10,7 @@ module.exports = {
   ],
   output: {
     path: path.join(__dirname, '/dist'),
-    filename: 'index_bundle.js'
+    filename: 'index_bundle.js',
   },
   module: {
     rules: [
@@ -62,9 +63,9 @@ module.exports = {
         }]
       },
       {
-        test: /\.(svg)$/,
+        test: /\.(ttf|eot|svg|woff(2)?)(\?[a-z0-9=&.]+)?$/,
         use: [{
-          loader: 'file-loader',
+          loader: 'url-loader',
           options: {
             name: 'images/[hash]-[name].[ext]'
           }
@@ -73,10 +74,19 @@ module.exports = {
     ],
   },
   devtool: 'source-map',
+  devServer: {
+    historyApiFallback: true,
+    hot: true,
+    inline: true,
+    contentBase: './src/',
+    watchContentBase: true,
+    publicPath: '/inmem/',
+  },
   plugins: [
     new HtmlWebpackPlugin({
       template: "./src/index.html"
-    })
+    }),
+    new webpack.HotModuleReplacementPlugin(),
   ],
   resolve: {
     alias: {
