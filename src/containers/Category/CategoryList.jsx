@@ -81,65 +81,79 @@ class CategoryList extends Component {
   }
 
   renderDefault() {
-    return (
-      <h2>Category List</h2>
-    );
+    return <h2>Category List</h2>;
   }
 
   renderCategoriesList(categoryList, isExpense) {
     let eventKey = isExpense ? 'expense' : 'income';
     let title = isExpense ? 'Expense' : 'Income';
     let cls = isExpense ? 'expense-list' : 'income-list';
-    return <Tab eventKey={eventKey} title={title} className={cls}>
-      <Accordion>
-        {categoryList.map(
-          (category, idx) => {
+    return (
+      <Tab eventKey={eventKey} title={title} className={cls}>
+        <Accordion>
+          {categoryList.map((category, idx) => {
             let header = category.categoryName.trim();
             if (category.isDefault) {
               header = header.concat(' ⭐️');
             }
             let subCategories = category.subCategories;
-            return <Card
-              key={category.categoryId}
-              className="category-item"
-              data-icon={category.iconId}
-            >
-              {this.state.isEditMode ?
-                <LinkContainer
-                  key={idx}
-                  to={`/categories/${category.categoryId}`}
-                  className="category-item__toggle"
-                  data-icon={category.iconId}
-                >
-                  <div>{header}</div>
-                </LinkContainer> :
-                <div>
-                  <Accordion.Toggle eventKey={idx} className="category-item__toggle">
-                    {header}
-                  </Accordion.Toggle>
-                  <Accordion.Collapse eventKey={idx} className="category-item__collapse">
-                    <div>
-                      {!!subCategories && subCategories.map(
-                        (sub, idx2) => {
-                          return <Card.Body key={idx2} className="category-item__sub">{sub.categoryName}</Card.Body>;
-                        }
-                      )}
-                    </div>
-                  </Accordion.Collapse>
-                </div>
-              }
-            </Card>;
-          }
-        )}
-      </Accordion>
-    </Tab>;
+            return (
+              <Card
+                key={category.categoryId}
+                className="category-item"
+                data-icon={category.iconId}
+              >
+                {this.state.isEditMode ? (
+                  <LinkContainer
+                    key={idx}
+                    to={`/categories/${category.categoryId}`}
+                    className="category-item__toggle"
+                    data-icon={category.iconId}
+                  >
+                    <div>{header}</div>
+                  </LinkContainer>
+                ) : (
+                  <div>
+                    <Accordion.Toggle
+                      eventKey={idx}
+                      className="category-item__toggle"
+                    >
+                      {header}
+                    </Accordion.Toggle>
+                    <Accordion.Collapse
+                      eventKey={idx}
+                      className="category-item__collapse"
+                    >
+                      <div>
+                        {!!subCategories &&
+                          subCategories.map((sub, idx2) => {
+                            return (
+                              <Card.Body
+                                key={idx2}
+                                className="category-item__sub"
+                              >
+                                {sub.categoryName}
+                              </Card.Body>
+                            );
+                          })}
+                      </div>
+                    </Accordion.Collapse>
+                  </div>
+                )}
+              </Card>
+            );
+          })}
+        </Accordion>
+      </Tab>
+    );
   }
 
   renderCategories() {
     return (
       <div className="categories">
         <div className="page-header">
-          <h1>Categories
+          <h1>
+            Categories
             <ButtonGroup>
               <Button
                 as={LinkContainer}
@@ -148,7 +162,9 @@ class CategoryList extends Component {
                 to="/categories/new"
                 className="add-btn"
                 variant="dark"
-              ><button>＋</button></Button>
+              >
+                <button>＋</button>
+              </Button>
               <ToggleButtonGroup
                 onChange={this.onToggleEditMode}
                 type="checkbox"
@@ -164,17 +180,18 @@ class CategoryList extends Component {
             </ButtonGroup>
           </h1>
         </div>
-        {!!this.state.otherError && <Alert
-          onClose variant="danger"
-        >
-          {this.state.otherError}
-        </Alert>}
+        {!!this.state.otherError && (
+          <Alert onClose variant="danger">
+            {this.state.otherError}
+          </Alert>
+        )}
         <ListGroup className="category-list">
-          {!this.state.isLoading &&
+          {!this.state.isLoading && (
             <Tabs defaultActiveKey="expense" id="uncontrolled-tab-example">
               {this.renderCategoriesList(this.state.expenseList, true)}
               {this.renderCategoriesList(this.state.incomeList, false)}
-            </Tabs>}
+            </Tabs>
+          )}
         </ListGroup>
       </div>
     );
@@ -183,7 +200,9 @@ class CategoryList extends Component {
   render() {
     return (
       <div className="CategoryList">
-        {this.props.isAuthenticated ? this.renderCategories() : this.renderDefault()}
+        {this.props.isAuthenticated
+          ? this.renderCategories()
+          : this.renderDefault()}
       </div>
     );
   }
