@@ -34,6 +34,24 @@ class Category extends Component {
     };
   }
 
+  async componentDidMount() {
+    if (this.props.isEditMode) {
+      try {
+        const category = await API.getCategory(this.props.match.params.id);
+        const { categoryId, categoryName, isExpense, iconId, subCategories } = category;
+        this.setState({
+          categoryId,
+          categoryName,
+          isExpense,
+          iconId,
+          subCategories,
+        });
+      } catch (e) {
+        this.setState({ otherError: e });
+      }
+    }
+  }
+
   validateForm() {
     if (!this.state.categoryName || this.state.categoryName.length == 0)
       return false;
@@ -129,6 +147,14 @@ class Category extends Component {
     try {
       if (!this.props.isEditMode) {
         await API.postCategory({
+          categoryName: this.state.categoryName,
+          isExpense: this.state.isExpense,
+          iconId: this.state.iconId,
+          subCategories: this.state.subCategories,
+        });
+      } else {
+        await API.updateCategory({
+          categoryId: this.state.categoryId,
           categoryName: this.state.categoryName,
           isExpense: this.state.isExpense,
           iconId: this.state.iconId,

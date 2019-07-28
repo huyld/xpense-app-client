@@ -80,3 +80,30 @@ export function postCategory(category) {
     body: category
   });
 }
+
+/**
+ * Get category detail
+ *
+ * @export
+ * @param {string} categoryId
+ * @returns
+ */
+export function getCategory(categoryId) {
+  return API.get('xpense', `/categories/${categoryId}`);
+}
+
+
+/**
+ * Update category detail
+ *
+ * @export
+ * @param {} category
+ * @returns
+ */
+export function updateCategory(category) {
+  return API.put('xpense', `/categories/${category.categoryId}`, {
+    body: category,
+  });
+}
+
+

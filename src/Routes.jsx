@@ -31,6 +31,7 @@ function Routes(props) {
 
       <AuthenticatedRoute path="/categories" exact component={CategoryList} props={props.childProps} />
       <AuthenticatedRoute path="/categories/new" exact component={Category} props={{ isEditMode: false, ...props.childProps }} />
+      <AuthenticatedRoute path="/categories/:id" exact component={Category} props={{ isEditMode: true, ...props.childProps}} />
       <Route component={NotFound} />
     </Switch>
   );
