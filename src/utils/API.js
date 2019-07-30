@@ -106,4 +106,14 @@ export function updateCategory(category) {
   });
 }
 
+/**
+ * Delete a category
+ *
+ * @export
+ * @param {string} categoryId ID of the category to be deleted
+ * @returns
+ */
+export function deleteCategory(categoryId) {
+  return API.del('xpense', `/categories/${categoryId}`);
+}
 

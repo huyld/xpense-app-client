@@ -20,6 +20,7 @@ class Category extends Component {
     this.handleSubCategoryDelete = this.handleSubCategoryDelete.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
     this.handleCancel = this.handleCancel.bind(this);
+    this.handleDelete = this.handleDelete.bind(this);
 
     this.state = {
       categoryId: null,
@@ -139,6 +140,19 @@ class Category extends Component {
     this.props.history.push('/categories');
   }
 
+  async handleDelete() {
+    const confirmed = window.confirm(
+      'Are you sure you want to delete this category? Deleting category also deletes related transactions.'
+    );
+    if (!confirmed) {
+      return;
+    }
+    // TODO: wait for confirmation from server and redirect to category list if success
+    await API.deleteCategory(this.state.categoryId);
+    this.props.history.push('/categories');
+  }
+
+
   async handleSubmit(event) {
     event.preventDefault();
 
@@ -187,6 +201,7 @@ class Category extends Component {
           handleSubCategoryDelete={this.handleSubCategoryDelete}
           handleSubmit={this.handleSubmit}
           handleCancel={this.handleCancel}
+          handleDelete={this.handleDelete}
 
           categoryName={this.state.categoryName}
           iconId={this.state.iconId}
