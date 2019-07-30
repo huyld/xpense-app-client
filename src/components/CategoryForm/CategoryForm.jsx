@@ -129,6 +129,14 @@ class CategoryForm extends Component {
         >
           Cancel
         </Button>
+        <Button
+          block
+          variant="danger"
+          size="lg"
+          onClick={this.props.handleDelete}
+        >
+          Delete
+        </Button>
       </form>
     );
   }
@@ -145,6 +153,8 @@ CategoryForm.propTypes = {
   handleSubCategoryDelete: PropTypes.func.isRequired,
   handleSubmit: PropTypes.func.isRequired,
   handleCancel: PropTypes.func.isRequired,
+  handleDelete: PropTypes.func.isRequired,
+
 
   categoryName: PropTypes.string,
   iconId: PropTypes.string,
